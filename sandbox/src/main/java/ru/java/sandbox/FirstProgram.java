@@ -6,11 +6,12 @@ public class FirstProgram {
 
         System.out.println("Hello");
         Point point1 = new Point(5, 6);
+
         Point point2 = new Point(6, 4);
-        Point point = new Point(5, 6, 6, 4);
+
 
         System.out.println(distance(point1, point2));
-        System.out.println(point.distance1());
+        System.out.println(point1.distance1(point2));
     }
 
     public static double distance(Point p1, Point p2) {
