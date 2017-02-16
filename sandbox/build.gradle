@@ -1,12 +1,17 @@
 apply plugin: 'java'
 apply plugin: 'application'
-mainClassName = "FirstProgram"
+mainClassName = "ru.java.sandbox.FirstProgram"
+
+/*repositories {
+    mavenCentral()
+}*/
 
 repositories {
-    mavenCentral()
+    maven {
+        url "http://uk.maven.org/maven2"
+    }
 }
 
 dependencies {
-    compile 'com.buschmais.jqassistant.plugin:testng:1.2'
-
+    compile 'org.testng:testng:6.10'
 }
