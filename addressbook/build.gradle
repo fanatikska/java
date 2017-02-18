@@ -1,0 +1,17 @@
+apply plugin: 'java'
+
+
+/*repositories {
+    mavenCentral()
+}*/
+
+repositories {
+    maven {
+        url "http://uk.maven.org/maven2"
+    }
+}
+
+dependencies {
+    compile 'org.testng:testng:6.10'
+    compile 'org.seleniumhq.selenium:selenium-java:3.0.1'
+}
