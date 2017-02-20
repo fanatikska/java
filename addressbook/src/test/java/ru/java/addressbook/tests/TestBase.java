@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import ru.java.addressbook.appmanager.ApplicationManager;
 
 /**
- * Created by SBT-Studenov-DV on 20.02.2017.
+ * Created by Studenov-DV on 20.02.2017.
  */
 public class TestBase {
 
