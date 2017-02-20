@@ -49,5 +49,5 @@ public class ApplicationManager {
     public SessionHelper getSessionHelper(){
         return  sessionHelper;
     }
-    public HomeHelper gethomeHelper() {return homeHelper;}
+    public HomeHelper getHomeHelper() {return homeHelper;}
 }

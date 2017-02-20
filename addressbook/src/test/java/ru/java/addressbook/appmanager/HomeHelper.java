@@ -20,4 +20,8 @@ public class HomeHelper extends BaseHelper{
     public void initContactModification() {
         click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
     }
+
+    public void initContactDelete(){
+        click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+    }
 }
