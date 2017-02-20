@@ -3,6 +3,7 @@ package ru.java.addressbook.tests;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import ru.java.addressbook.appmanager.ApplicationManager;
+import ru.java.addressbook.appmanager.BaseHelper;
 
 /**
  * Created by Studenov-DV on 20.02.2017.
