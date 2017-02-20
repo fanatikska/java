@@ -1,5 +1,6 @@
 package ru.java.addressbook.appmanager;
 
+import com.thoughtworks.selenium.webdriven.commands.Click;
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.java.addressbook.model.GroupData;
@@ -33,5 +34,13 @@ public class GroupHelper extends BaseHelper{
 
     public void selectGroup() {
         click(By.name("selected[]"));
+    }
+
+    public void initGroupModification() {
+        click(By.name("edit"));
+    }
+
+    public void submitGroupModification() {
+        click(By.name("update"));
     }
 }
