@@ -9,18 +9,12 @@ import ru.java.addressbook.model.GroupData;
  */
 public class GroupHelper extends BaseTest{
 
-    private FirefoxDriver wd;
-
     public GroupHelper(FirefoxDriver wd) {
-        this.wd = wd;
+        super(wd);
     }
 
     public void submitGroupCreation() {
         click(By.name("submit"));
-    }
-
-    private void click(By locator) {
-        wd.findElement(locator).click();
     }
 
     public void fillGroupForm(GroupData groupData) {
@@ -28,12 +22,6 @@ public class GroupHelper extends BaseTest{
         type(By.name("group_header"), groupData.getHeader());
         type(By.name("group_footer"), groupData.getFooter());
         }
-
-    private void type(By locator, String text) {
-        wd.findElement(locator).click();
-        wd.findElement(By.name("group_name")).clear();
-        wd.findElement(By.name("group_name")).sendKeys(text);
-    }
 
     public void initGroupCreation() {
         click(By.name("new"));
