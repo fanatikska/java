@@ -3,7 +3,7 @@ package ru.java.addressbook.tests;
 import org.testng.annotations.Test;
 import ru.java.addressbook.model.GroupData;
 
-public class GroupCreationTest extends TestBase{
+public class GroupCreationTests extends TestBase{
 
     @Test
     public void testGroupCreation() {
