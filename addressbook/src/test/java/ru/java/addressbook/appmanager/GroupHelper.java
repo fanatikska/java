@@ -34,4 +34,10 @@ public class GroupHelper extends BaseTest{
     public void selectGroup() {
         click(By.name("selected[]"));
     }
+    public void editSelectedGroup(){
+        click(By.name("edit"));
+    }
+    public void submitEditSelectedGroup(){
+        click(By.name("update"));
+    }
 }
