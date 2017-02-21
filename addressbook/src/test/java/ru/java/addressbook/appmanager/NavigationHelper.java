@@ -18,5 +18,9 @@ public class NavigationHelper extends BaseTest{
     public void goToAddContactPage() {
         click(By.linkText("add new"));
     }
+    public void goToPageHome(){
+        click(By.linkText("home"));
+
+    }
 
 }
