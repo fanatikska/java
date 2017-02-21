@@ -6,22 +6,16 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 /**
  * Created by Studenov-DV on 21.02.2017.
  */
-public class SystemHelper {
-
-    private FirefoxDriver wd;
+public class SystemHelper extends BaseTest{
 
     public SystemHelper(FirefoxDriver wd) {
-        this.wd = wd;
+        super(wd);
     }
 
     public void login(String login, String password) {
-        wd.findElement(By.name("user")).click();
-        wd.findElement(By.name("user")).clear();
-        wd.findElement(By.name("user")).sendKeys(login);
-        wd.findElement(By.name("pass")).click();
-        wd.findElement(By.name("pass")).clear();
-        wd.findElement(By.name("pass")).sendKeys(password);
-        wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
+        type(By.name("user"), login);
+        type(By.name("pass"), password);
+        click(By.xpath("//form[@id='LoginForm']/input[3]"));
     }
 
 }
