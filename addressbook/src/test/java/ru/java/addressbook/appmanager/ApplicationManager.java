@@ -1,9 +1,7 @@
 package ru.java.addressbook.appmanager;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.java.addressbook.model.ContactData;
 
 import java.util.concurrent.TimeUnit;
 
@@ -40,23 +38,23 @@ public class ApplicationManager {
     }
 
 
-
     public void stop() {
         wd.quit();
     }
 
 
-
-
     public GroupHelper getGroupHelper() {
         return groupHelper;
     }
+
     public ContactHelper getContactHelper() {
         return contactHelper;
     }
+
     public NavigationHelper getNavigationHelper() {
         return navigationHelper;
     }
+
     public SystemHelper getSystemHelper() {
         return systemHelper;
     }
