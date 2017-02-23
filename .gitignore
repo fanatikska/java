@@ -1,1 +1,4 @@
 .idea/workspace.xml
+*.class
+addressbook/gradle/wrapper/gradle-wrapper.jar
+addressbook/gradle/wrapper/gradle-wrapper.properties
