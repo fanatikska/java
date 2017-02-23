@@ -1,4 +1,10 @@
-.idea/workspace.xml
+.idea
 *.class
-addressbook/gradle/wrapper/gradle-wrapper.jar
-addressbook/gradle/wrapper/gradle-wrapper.properties
+.gradle
+addressbook/gradle/wrapper/
+gradle/3.3/taskArtifacts
+build/
+
+
+
+
