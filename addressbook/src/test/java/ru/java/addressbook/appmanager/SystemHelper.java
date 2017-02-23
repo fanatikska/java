@@ -1,6 +1,7 @@
 package ru.java.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
@@ -8,7 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  */
 public class SystemHelper extends BaseTest{
 
-    public SystemHelper(FirefoxDriver wd) {
+    public SystemHelper(WebDriver wd) {
         super(wd);
     }
 

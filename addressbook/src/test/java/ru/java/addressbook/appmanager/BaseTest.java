@@ -2,6 +2,7 @@ package ru.java.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
@@ -10,9 +11,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class BaseTest {
 
 
-    protected FirefoxDriver wd;
+    protected WebDriver wd;
 
-    public BaseTest(FirefoxDriver wd) {
+    public BaseTest(WebDriver wd) {
         this.wd = wd;
     }
 

@@ -1,6 +1,7 @@
 package ru.java.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.java.addressbook.model.GroupData;
 
@@ -9,7 +10,7 @@ import ru.java.addressbook.model.GroupData;
  */
 public class GroupHelper extends BaseTest{
 
-    public GroupHelper(FirefoxDriver wd) {
+    public GroupHelper(WebDriver wd) {
         super(wd);
     }
 
