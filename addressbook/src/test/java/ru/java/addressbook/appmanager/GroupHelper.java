@@ -41,4 +41,14 @@ public class GroupHelper extends BaseTest{
     public void submitEditSelectedGroup(){
         click(By.name("update"));
     }
+
+    public void createGroup(GroupData groupData) {
+        initGroupCreation();
+        fillGroupForm(groupData);
+        submitGroupCreation();
+    }
+
+    public boolean isThereAGroup() {
+        return isElementPresent(By.name("selected[]"));
+    }
 }

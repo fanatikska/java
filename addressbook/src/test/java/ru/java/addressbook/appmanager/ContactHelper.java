@@ -52,4 +52,13 @@ public class ContactHelper extends BaseTest {
     public void submitDeleteSelectedContact() {
         click(By.xpath("//div[@id='content']/form[2]/input[2]"));
     }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.id("2"));
+    }
+
+    public void createContact(ContactData contactData, boolean b) {
+        fillContactForm(new ContactData("name", "last_name", "nickname", "title", "company", null, null, null, "stest1"), true);
+        submitContactCreation();
+    }
 }
