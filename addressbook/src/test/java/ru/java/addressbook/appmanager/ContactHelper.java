@@ -29,10 +29,12 @@ public class ContactHelper extends BaseTest {
         type(By.name("address"), contactData.getAddress());
         type(By.name("mobile"), contactData.getPhone_number());
         type(By.name("email"), contactData.getEmail());
+        System.out.println("first" + wd.findElement(By.name("new_group")).getText());
         if (! creation) {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
-        } else if (creation && isElementPresent(By.name("new_group"))
-                && wd.findElement(By.name("new_group")).getText().equals("[none]")){
+        } else if (creation
+                && isElementPresent(By.name("new_group"))){
+            System.out.println("second" + wd.findElement(By.name("new_group")).getText());
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
            }
 

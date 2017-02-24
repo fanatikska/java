@@ -23,7 +23,7 @@ public class BaseTest {
 
     protected void type(By locator, String text) {
         if (text != null) {
-            System.out.println("локатор!!!" + wd.findElement(locator).getAttribute("name"));
+
             String existingText = wd.findElement(locator).getAttribute("value");
             if (!existingText.equals(text)) {
                 wd.findElement(locator).click();
