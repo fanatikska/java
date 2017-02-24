@@ -2,8 +2,8 @@ package ru.java.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
  * Created by studenov-dv on 21.02.2017.
@@ -22,17 +22,34 @@ public class BaseTest {
     }
 
     protected void type(By locator, String text) {
-        wd.findElement(locator).click();
-        wd.findElement(locator).clear();
-        wd.findElement(locator).sendKeys(text);
+        if (text != null) {
+            String existingText = wd.findElement(locator).getAttribute("value");
+            if (!existingText.equals(text)) {
+                wd.findElement(locator).click();
+                wd.findElement(locator).clear();
+                wd.findElement(locator).sendKeys(text);
+            }
+
+        }
     }
 
-    public  boolean isAlertPresent() {
+    public boolean isAlertPresent() {
         try {
             wd.switchTo().alert();
             return true;
         } catch (NoAlertPresentException e) {
             return false;
         }
+    }
+
+    protected boolean isElementPresent(By locator) {
+
+        try{
+            wd.findElement(locator);
+            return true;
+        } catch (NoSuchElementException ex){
+            return false;
+        }
+
     }
 }

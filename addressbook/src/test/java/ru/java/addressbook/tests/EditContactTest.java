@@ -13,7 +13,7 @@ public class EditContactTest extends TestBase{
         app.getNavigationHelper().goToPageHome();
         app.getContactHelper().selectContact();
         app.getContactHelper().enterEditSelectedContact();
-        app.getContactHelper().fillContactForm(new ContactData("name1", "last_name1", "nickname1", "title1", "company1", "address1 80 / 5", "1-111-111-11-11", "e-mail1@mail.ru"));
+        app.getContactHelper().fillContactForm(new ContactData("name1", "last_name1", "nickname1", "title1", "company1", "address1 80 / 5", "1-111-111-11-11", "e-mail1@mail.ru", null), false);
         app.getContactHelper().submitEditSelectedContact();
         app.getNavigationHelper().goToPageHome();
     }
