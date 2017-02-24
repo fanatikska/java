@@ -29,16 +29,18 @@ public class ContactHelper extends BaseTest {
         type(By.name("address"), contactData.getAddress());
         type(By.name("mobile"), contactData.getPhone_number());
         type(By.name("email"), contactData.getEmail());
-        if (creation){
-            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-        } else {
+        if (! creation) {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
+        } else if (creation && isElementPresent(By.name("new_group"))
+                && wd.findElement(By.name("new_group")).getText().equals("[none]")){
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+           }
 
         }
-   }
+
 
     public void selectContact(){
-        click(By.id("2"));
+        click(By.name("selected[]"));
     }
 
     public void enterEditSelectedContact(){
@@ -54,11 +56,11 @@ public class ContactHelper extends BaseTest {
     }
 
     public boolean isThereAContact() {
-        return isElementPresent(By.id("2"));
+        return isElementPresent(By.name("selected[]"));
     }
 
     public void createContact(ContactData contactData, boolean b) {
-        fillContactForm(new ContactData("name", "last_name", "nickname", "title", "company", null, null, null, "stest1"), true);
+        fillContactForm(new ContactData("name", "last_name", "nickname", "title", "company", "address", "phone_number", "email", "stest1"), true);
         submitContactCreation();
     }
 }
