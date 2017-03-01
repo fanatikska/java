@@ -20,7 +20,7 @@ public class ContactHelper extends BaseTest {
     }
 
 
-    public void fillContactForm(ContactData contactData, boolean creation) {
+    public void fillContactForm(ContactData contactData) {
         type(By.name("firstname"), contactData.getName());
         type(By.name("lastname"), contactData.getLast_name());
         type(By.name("nickname"), contactData.getNick_name());
@@ -29,12 +29,10 @@ public class ContactHelper extends BaseTest {
         type(By.name("address"), contactData.getAddress());
         type(By.name("mobile"), contactData.getPhone_number());
         type(By.name("email"), contactData.getEmail());
-        System.out.println("first" + wd.findElement(By.name("new_group")).getText());
-        if (! creation) {
+        if (! contactData.getb()) {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
-        } else if (creation
+        } else if (contactData.getb()
                 && isElementPresent(By.name("new_group"))){
-            System.out.println("second" + wd.findElement(By.name("new_group")).getText());
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
            }
 
@@ -61,8 +59,8 @@ public class ContactHelper extends BaseTest {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public void createContact(ContactData contactData, boolean b) {
-        fillContactForm(new ContactData("name", "last_name", "nickname", "title", "company", "address", "phone_number", "email", "stest1"), true);
+    public void createContact(ContactData contactData) {
+        fillContactForm(new ContactData("name", "last_name", "nickname", "title", "company", "address", "phone_number", "email", "stest1", true));
         submitContactCreation();
     }
 }
