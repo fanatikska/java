@@ -10,9 +10,9 @@ public class ContactData {
     private final String phone_number;
     private final String email;
     private final String group;
-    private final Boolean b;
 
-    public ContactData(String name, String last_name, String nick_name, String title, String company, String address, String phone_number, String email, String group, Boolean b) {
+
+    public ContactData(String name, String last_name, String nick_name, String title, String company, String address, String phone_number, String email, String group) {
         this.name = name;
         this.last_name = last_name;
         this.nick_name = nick_name;
@@ -23,7 +23,6 @@ public class ContactData {
         this.phone_number = phone_number;
         this.email = email;
         this.group = group;
-        this.b = b;
     }
 
     public String getName() {
@@ -62,7 +61,4 @@ public class ContactData {
         return group;
     }
 
-    public Boolean getb() {
-        return b;
-    }
 }

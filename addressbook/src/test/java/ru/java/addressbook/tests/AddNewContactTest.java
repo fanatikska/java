@@ -1,5 +1,6 @@
 package ru.java.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.java.addressbook.model.ContactData;
 
@@ -9,9 +10,14 @@ public class AddNewContactTest extends TestBase{
       @Test
     public void testAddNewContactTest() {
 
+        app.getNavigationHelper().goToPageHome();
+        int before = app.getContactHelper().getContactCount();
         app.getNavigationHelper().goToAddContactPage();
-        app.getContactHelper().createContact(new ContactData("name", "last_name", "nickname", "title", "company", "address 80 / 5", "8-905-999-99-99", "e-mail@mail.ru", "stest1", true));
-        }
+        app.getContactHelper().createContact(new ContactData("name", "last_name", "nickname", "title", "company", "address 80 / 5", "8-905-999-99-99", "e-mail@mail.ru", "stest1"), true);
+        app.getNavigationHelper().goToPageHome();
+        int after = app.getContactHelper().getContactCount();
+          Assert.assertEquals(before + 1, after );
+      }
 
 
 }

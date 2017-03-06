@@ -2,9 +2,14 @@ package ru.java.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.java.addressbook.model.ContactData;
+import ru.java.addressbook.model.GroupData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Studenov-DV on 21.02.2017.
@@ -20,7 +25,7 @@ public class ContactHelper extends BaseTest {
     }
 
 
-    public void fillContactForm(ContactData contactData) {
+    public void fillContactForm(ContactData contactData, Boolean bool) {
         type(By.name("firstname"), contactData.getName());
         type(By.name("lastname"), contactData.getLast_name());
         type(By.name("nickname"), contactData.getNick_name());
@@ -29,9 +34,9 @@ public class ContactHelper extends BaseTest {
         type(By.name("address"), contactData.getAddress());
         type(By.name("mobile"), contactData.getPhone_number());
         type(By.name("email"), contactData.getEmail());
-        if (! contactData.getb()) {
+        if (! bool) {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
-        } else if (contactData.getb()
+        } else if (bool
                 && isElementPresent(By.name("new_group"))){
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
            }
@@ -59,8 +64,23 @@ public class ContactHelper extends BaseTest {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public void createContact(ContactData contactData) {
-        fillContactForm(new ContactData("name", "last_name", "nickname", "title", "company", "address", "phone_number", "email", "stest1", true));
+    public void createContact(ContactData contactData, Boolean bool) {
+        fillContactForm(contactData, true);
         submitContactCreation();
+    }
+
+    public int getContactCount() {
+        return wd.findElements(By.name("selected[]")).size();
+    }
+
+    public List<GroupData> getContactList () {
+        List<GroupData> groups = new ArrayList<GroupData>();
+        List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+        for(WebElement element : elements){
+            String name = element.getText();
+            GroupData group = new GroupData("name", null, null);
+            groups.add(group);
+        }
+        return groups;
     }
 }
