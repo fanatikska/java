@@ -70,16 +70,31 @@ public class ContactHelper extends BaseTest {
     }
 
     public int getContactCount() {
-        return wd.findElements(By.name("selected[]")).size();
+        return wd.findElements(By.cssSelector("tr.odd")).size();
     }
 
     public List<ContactData> getContactList () {
-        List<ContactData> groups = new ArrayList<ContactData>();
+        List<ContactData> contacts = new ArrayList<ContactData>();
+        List<WebElement> elements = wd.findElements(By.cssSelector("tr.odd"));
+        for(WebElement element : elements){
+            ContactData contact = new ContactData("name", "last_name", "nickname", "title", "company", "address 80 / 5", "8-905-999-99-99", "e-mail@mail.ru", "stest1");
+            contacts.add(contact);
+
+        }
+        return contacts;
+    }
+
+
+
+
+    public List<GroupData> getGroupList() {
+        List<GroupData> groups = new ArrayList<GroupData>();
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
         for(WebElement element : elements){
             String name = element.getText();
-            ContactData contact = new ContactData("name", "last_name", "nickname", "title", "company", "address 80 / 5", "8-905-999-99-99", "e-mail@mail.ru", "stest1");
-            groups.add(contact);
+            GroupData group = new GroupData(name, null, null);
+            groups.add(group);
+
         }
         return groups;
     }
