@@ -70,12 +70,12 @@ public class ContactHelper extends BaseTest {
     }
 
     public int getContactCount() {
-        return wd.findElements(By.cssSelector("tr.odd")).size();
+        return wd.findElements(By.cssSelector("tr")).size();
     }
 
     public List<ContactData> getContactList () {
         List<ContactData> contacts = new ArrayList<ContactData>();
-        List<WebElement> elements = wd.findElements(By.cssSelector("tr.odd"));
+        List<WebElement> elements = wd.findElements(By.cssSelector("tr"));
         for(WebElement element : elements){
             ContactData contact = new ContactData("name", "last_name", "nickname", "title", "company", "address 80 / 5", "8-905-999-99-99", "e-mail@mail.ru", "stest1");
             contacts.add(contact);
