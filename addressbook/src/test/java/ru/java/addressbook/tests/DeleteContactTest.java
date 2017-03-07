@@ -21,7 +21,7 @@ public class DeleteContactTest extends TestBase{
             app.getNavigationHelper().goToPageHome();
         }
         int before = app.getContactHelper().getContactCount();
-        app.getContactHelper().selectContact();
+        app.getContactHelper().selectContact(0);
         app.getContactHelper().enterEditSelectedContact();
         app.getContactHelper().submitDeleteSelectedContact();
         app.getNavigationHelper().goToPageHome();

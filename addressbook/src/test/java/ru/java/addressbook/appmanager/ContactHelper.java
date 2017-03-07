@@ -44,8 +44,8 @@ public class ContactHelper extends BaseTest {
         }
 
 
-    public void selectContact(){
-        click(By.name("selected[]"));
+    public void selectContact(Integer index){
+        wd.findElements(By.name("selected[]")).get(index).click();
     }
 
     public void enterEditSelectedContact(){
@@ -73,13 +73,13 @@ public class ContactHelper extends BaseTest {
         return wd.findElements(By.name("selected[]")).size();
     }
 
-    public List<GroupData> getContactList () {
-        List<GroupData> groups = new ArrayList<GroupData>();
+    public List<ContactData> getContactList () {
+        List<ContactData> groups = new ArrayList<ContactData>();
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
         for(WebElement element : elements){
             String name = element.getText();
-            GroupData group = new GroupData("name", null, null);
-            groups.add(group);
+            ContactData contact = new ContactData("name", "last_name", "nickname", "title", "company", "address 80 / 5", "8-905-999-99-99", "e-mail@mail.ru", "stest1");
+            groups.add(contact);
         }
         return groups;
     }
