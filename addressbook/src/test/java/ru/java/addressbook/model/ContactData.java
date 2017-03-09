@@ -10,9 +10,24 @@ public class ContactData {
     private final String phone_number;
     private final String email;
     private final String group;
+    private  int id;
 
 
     public ContactData(String name, String last_name, String nick_name, String title, String company, String address, String phone_number, String email, String group) {
+        this.name = name;
+        this.last_name = last_name;
+        this.nick_name = nick_name;
+
+        this.title = title;
+        this.company = company;
+        this.address = address;
+        this.phone_number = phone_number;
+        this.email = email;
+        this.group = group;
+    }
+
+    public ContactData(int id, String name, String last_name, String nick_name, String title, String company, String address, String phone_number, String email, String group) {
+        this.id = Integer.MAX_VALUE;
         this.name = name;
         this.last_name = last_name;
         this.nick_name = nick_name;
@@ -61,6 +76,14 @@ public class ContactData {
         return group;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -69,27 +92,13 @@ public class ContactData {
         ContactData that = (ContactData) o;
 
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (last_name != null ? !last_name.equals(that.last_name) : that.last_name != null) return false;
-        if (nick_name != null ? !nick_name.equals(that.nick_name) : that.nick_name != null) return false;
-        if (title != null ? !title.equals(that.title) : that.title != null) return false;
-        if (company != null ? !company.equals(that.company) : that.company != null) return false;
-        if (address != null ? !address.equals(that.address) : that.address != null) return false;
-        if (phone_number != null ? !phone_number.equals(that.phone_number) : that.phone_number != null) return false;
-        if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        return group != null ? group.equals(that.group) : that.group == null;
+        return last_name != null ? last_name.equals(that.last_name) : that.last_name == null;
     }
 
     @Override
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (last_name != null ? last_name.hashCode() : 0);
-        result = 31 * result + (nick_name != null ? nick_name.hashCode() : 0);
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (company != null ? company.hashCode() : 0);
-        result = 31 * result + (address != null ? address.hashCode() : 0);
-        result = 31 * result + (phone_number != null ? phone_number.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (group != null ? group.hashCode() : 0);
         return result;
     }
 
@@ -105,6 +114,8 @@ public class ContactData {
                 ", phone_number='" + phone_number + '\'' +
                 ", email='" + email + '\'' +
                 ", group='" + group + '\'' +
+                ", id=" + id +
                 '}';
     }
+
 }

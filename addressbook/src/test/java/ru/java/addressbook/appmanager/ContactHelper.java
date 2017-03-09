@@ -34,22 +34,22 @@ public class ContactHelper extends BaseTest {
         type(By.name("address"), contactData.getAddress());
         type(By.name("mobile"), contactData.getPhone_number());
         type(By.name("email"), contactData.getEmail());
-        if (! bool) {
+        if (!bool) {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         } else if (bool
-                && isElementPresent(By.name("new_group"))){
+                && isElementPresent(By.name("new_group"))) {
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-           }
-
         }
 
+    }
 
-    public void selectContact(Integer index){
+
+    public void selectContact(Integer index) {
         wd.findElements(By.name("selected[]")).get(index).click();
     }
 
-    public void enterEditSelectedContact(){
-        click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+    public void enterEditSelectedContact(int index) {
+        wd.findElements(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).get(index).click();
     }
 
     public void submitEditSelectedContact() {
@@ -73,29 +73,34 @@ public class ContactHelper extends BaseTest {
         return wd.findElements(By.cssSelector("tr")).size();
     }
 
-    public List<ContactData> getContactList () {
+    public List<ContactData> getContactList() {
+        String last_name;
+        String name;
         List<ContactData> contacts = new ArrayList<ContactData>();
-        List<WebElement> elements = wd.findElements(By.cssSelector("tr"));
-        for(WebElement element : elements){
-            ContactData contact = new ContactData("name", "last_name", "nickname", "title", "company", "address 80 / 5", "8-905-999-99-99", "e-mail@mail.ru", "stest1");
-            contacts.add(contact);
+        List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
+        List<WebElement> elements2 = wd.findElements(By.cssSelector("tr[name='entry'] > td"));
+        for (WebElement element : elements) {
+            Integer id = Integer.valueOf(element.findElement(By.cssSelector("td.center input")).getAttribute("value"));
+            for(int i=0; i<elements2.size(); i++){
+               if((i==1) || (i % 11 == 0)){
+                    last_name = String.valueOf(elements2.get(i));
+                   ContactData contact = new ContactData(id, "name", "last_name", null, null, null, null, null, null, null);
+                }
+                if ((i==2) || (i % 12 == 0)){
+                   name = String.valueOf(elements2.get(i));
+                    ContactData contact = new ContactData(id, "name", "last_name", null, null, null, null, null, null, null);
+                }
+                contacts.add(contact);
+            }
+
+
 
         }
         return contacts;
     }
 
 
-
-
-    public List<GroupData> getGroupList() {
-        List<GroupData> groups = new ArrayList<GroupData>();
-        List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
-        for(WebElement element : elements){
-            String name = element.getText();
-            GroupData group = new GroupData(name, null, null);
-            groups.add(group);
-
-        }
-        return groups;
-    }
 }
+
+
+
