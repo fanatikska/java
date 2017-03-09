@@ -14,6 +14,7 @@ public class ContactData {
 
 
     public ContactData(String name, String last_name, String nick_name, String title, String company, String address, String phone_number, String email, String group) {
+        this.id = Integer.MAX_VALUE;
         this.name = name;
         this.last_name = last_name;
         this.nick_name = nick_name;
@@ -27,7 +28,7 @@ public class ContactData {
     }
 
     public ContactData(int id, String name, String last_name, String nick_name, String title, String company, String address, String phone_number, String email, String group) {
-        this.id = Integer.MAX_VALUE;
+        this.id = id;
         this.name = name;
         this.last_name = last_name;
         this.nick_name = nick_name;

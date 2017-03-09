@@ -83,8 +83,8 @@ public class ContactHelper extends BaseTest {
             List<WebElement> cells = element.findElements(By.tagName("td"));
 
 
-                 String  last_name = String.valueOf(cells.get(1));
-                 String name = String.valueOf(cells.get(2));
+                 String  last_name = String.valueOf(cells.get(1).getText());
+                 String name = String.valueOf(cells.get(2).getText());
 
 
                     ContactData contact = new ContactData(id, name, last_name, null, null, null, null, null, null, null);
