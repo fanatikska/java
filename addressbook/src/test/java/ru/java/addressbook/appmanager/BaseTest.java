@@ -1,5 +1,6 @@
 package ru.java.addressbook.appmanager;
 
+import com.sun.rowset.internal.Row;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
@@ -12,6 +13,7 @@ public class BaseTest {
 
 
     protected WebDriver wd;
+
 
     public BaseTest(WebDriver wd) {
         this.wd = wd;

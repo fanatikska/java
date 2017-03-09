@@ -74,28 +74,27 @@ public class ContactHelper extends BaseTest {
     }
 
     public List<ContactData> getContactList() {
-        String last_name;
-        String name;
+
+
         List<ContactData> contacts = new ArrayList<ContactData>();
         List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
-        List<WebElement> elements2 = wd.findElements(By.cssSelector("tr[name='entry'] > td"));
         for (WebElement element : elements) {
             Integer id = Integer.valueOf(element.findElement(By.cssSelector("td.center input")).getAttribute("value"));
-            for(int i=0; i<elements2.size(); i++){
-               if((i==1) || (i % 11 == 0)){
-                    last_name = String.valueOf(elements2.get(i));
-                   ContactData contact = new ContactData(id, "name", "last_name", null, null, null, null, null, null, null);
-                }
-                if ((i==2) || (i % 12 == 0)){
-                   name = String.valueOf(elements2.get(i));
-                    ContactData contact = new ContactData(id, "name", "last_name", null, null, null, null, null, null, null);
-                }
+            List<WebElement> cells = element.findElements(By.tagName("td"));
+
+
+                 String  last_name = String.valueOf(cells.get(1));
+                 String name = String.valueOf(cells.get(2));
+
+
+                    ContactData contact = new ContactData(id, name, last_name, null, null, null, null, null, null, null);
+
                 contacts.add(contact);
             }
 
 
 
-        }
+
         return contacts;
     }
 
