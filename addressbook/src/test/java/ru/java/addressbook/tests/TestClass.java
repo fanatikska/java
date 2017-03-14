@@ -11,9 +11,9 @@ public class TestClass extends TestBase{
 
     @Test
     public void testTestClass(){
-        app.getNavigationHelper().goToAddContactPage();
-        app.getNavigationHelper().goToPageHome();
-        app.getNavigationHelper().goToPageHome();
+        app.goTo().addContactPage();
+        app.goTo().pageHome();
+        app.goTo().pageHome();
 
     }
 

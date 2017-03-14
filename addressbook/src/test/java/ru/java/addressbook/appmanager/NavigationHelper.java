@@ -12,7 +12,7 @@ public class NavigationHelper extends BaseTest{
         super(wd);
     }
 
-    public void goToGroupPage() {
+    public void groupPage() {
         if (isElementPresent(By.tagName("h1"))
                 && isElementPresent(By.xpath("//div[@id='content']//h1[.='Groups']"))
                 && wd.findElement(By.xpath("//div[@id='content']//h1[.='Groups']")).getText().equals("Groups")
@@ -24,7 +24,7 @@ public class NavigationHelper extends BaseTest{
         click(By.linkText("groups"));
 
     }
-    public void goToAddContactPage() {
+    public void addContactPage() {
         if (isElementPresent(By.tagName("h1"))
                 && isElementPresent(By.xpath("//div[@id='content']//h1[.='Edit / add address book entry']"))
                 && wd.findElement(By.xpath("//div[@id='content']//h1[.='Edit / add address book entry']")).getText().equals("Edit / add address book entry")
@@ -37,7 +37,7 @@ public class NavigationHelper extends BaseTest{
 
         click(By.linkText("add new"));
     }
-    public void goToPageHome(){
+    public void pageHome(){
         if (isElementPresent(By.id("maintable"))){
             return;
         }

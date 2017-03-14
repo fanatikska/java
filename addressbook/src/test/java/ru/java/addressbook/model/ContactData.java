@@ -1,45 +1,62 @@
 package ru.java.addressbook.model;
 
 public class ContactData {
-    private final String name;
-    private final String last_name;
-    private final String nick_name;
-    private final String title;
-    private final String company;
-    private final String address;
-    private final String phone_number;
-    private final String email;
-    private final String group;
-    private  int id;
+    private  String name;
+    private  String last_name;
+    private  String nick_name;
+    private  String title;
+    private  String company;
+    private  String address;
+    private  String phone_number;
+    private  String email;
+    private  String group;
+    private  int id = Integer.MAX_VALUE;
 
-
-    public ContactData(String name, String last_name, String nick_name, String title, String company, String address, String phone_number, String email, String group) {
-        this.id = Integer.MAX_VALUE;
+    public ContactData withName(String name) {
         this.name = name;
-        this.last_name = last_name;
-        this.nick_name = nick_name;
-
-        this.title = title;
-        this.company = company;
-        this.address = address;
-        this.phone_number = phone_number;
-        this.email = email;
-        this.group = group;
+        return this;
     }
 
-    public ContactData(int id, String name, String last_name, String nick_name, String title, String company, String address, String phone_number, String email, String group) {
-        this.id = id;
-        this.name = name;
+    public ContactData withLast_name(String last_name) {
         this.last_name = last_name;
-        this.nick_name = nick_name;
-
-        this.title = title;
-        this.company = company;
-        this.address = address;
-        this.phone_number = phone_number;
-        this.email = email;
-        this.group = group;
+        return this;
     }
+
+    public ContactData withNick_name(String nick_name) {
+        this.nick_name = nick_name;
+        return this;
+    }
+
+    public ContactData withTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public ContactData withCompany(String company) {
+        this.company = company;
+        return this;
+    }
+
+    public ContactData withAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public ContactData withPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+        return this;
+    }
+
+    public ContactData withEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public ContactData withGroup(String group) {
+        this.group = group;
+        return this;
+    }
+
 
     public String getName() {
         return name;
@@ -77,8 +94,9 @@ public class ContactData {
         return group;
     }
 
-    public void setId(int id) {
+    public ContactData withId(int id) {
         this.id = id;
+        return this;
     }
 
     public int getId() {

@@ -1,9 +1,9 @@
 package ru.java.addressbook.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.java.addressbook.model.ContactData;
-import ru.java.addressbook.model.GroupData;
 
 import java.util.Comparator;
 import java.util.List;
@@ -13,20 +13,27 @@ import java.util.List;
  */
 public class EditContactTest extends TestBase{
 
+    @BeforeMethod
+    public void ensurePrecondition(){
+        app.goTo().pageHome();
+        if (app.contact().list().size() == 0){
+            app.contact().create(new ContactData().withName("name").withLast_name("last_name")
+                    .withNick_name("nickname").withTitle("title").withCompany("company").withAddress("address 80 / 5")
+                    .withPhone_number("8-905-999-99-99").withEmail("e-mail@mail.ru").withGroup("stest1"), true);
+            app.goTo().pageHome();
+        }
+    }
+
     @Test
     public  void testEditContactTest(){
-        app.getNavigationHelper().goToPageHome();
-        ContactData contact = new ContactData("name", "last_name", "nickname", "title", "company", "address 80 / 5", "8-905-999-99-99", "e-mail@mail.ru", "stest1");
-        if (! app.getContactHelper().isThereAContact()){
-            app.getContactHelper().createContact(contact, true);
-            app.getNavigationHelper().goToPageHome();
-        }
-        List<ContactData> before = app.getContactHelper().getContactList();
-        app.getContactHelper().enterEditSelectedContact(0);
-        app.getContactHelper().fillContactForm(contact, false);
-        app.getContactHelper().submitEditSelectedContact();
-        app.getNavigationHelper().goToPageHome();
-        List<ContactData> after = app.getContactHelper().getContactList();
+
+        ContactData contact = new ContactData().withName("name5").withLast_name("last_name5")
+                .withNick_name("nickname5").withTitle("title5").withCompany("company5").withAddress("address 55 / 5")
+                .withPhone_number("8-905-555-55-55").withEmail("e-mail5@mail.ru").withGroup("stest1");
+        List<ContactData> before = app.contact().list();
+        app.contact().editContact(contact, 0);
+        app.goTo().pageHome();
+        List<ContactData> after = app.contact().list();
         Assert.assertEquals(before.size(), after.size());
         before.remove(0);
         before.add(contact);
@@ -35,4 +42,5 @@ public class EditContactTest extends TestBase{
         after.sort(byId);
         Assert.assertEquals(before, after);
     }
+
 }

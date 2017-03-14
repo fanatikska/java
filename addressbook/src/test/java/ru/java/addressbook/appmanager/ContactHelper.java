@@ -44,7 +44,7 @@ public class ContactHelper extends BaseTest {
     }
 
 
-    public void selectContact(Integer index) {
+    public void select(Integer index) {
         wd.findElements(By.name("selected[]")).get(index).click();
     }
 
@@ -64,7 +64,7 @@ public class ContactHelper extends BaseTest {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public void createContact(ContactData contactData, Boolean bool) {
+    public void create(ContactData contactData, Boolean bool) {
         fillContactForm(contactData, true);
         submitContactCreation();
     }
@@ -73,7 +73,7 @@ public class ContactHelper extends BaseTest {
         return wd.findElements(By.cssSelector("tr")).size();
     }
 
-    public List<ContactData> getContactList() {
+    public List<ContactData> list() {
 
 
         List<ContactData> contacts = new ArrayList<ContactData>();
@@ -98,7 +98,17 @@ public class ContactHelper extends BaseTest {
         return contacts;
     }
 
+    public void editContact(ContactData contact, int index) {
+        enterEditSelectedContact(index);
+        fillContactForm(contact, false);
+        submitEditSelectedContact();
+    }
 
+    public void deleteContact(int index) {
+        select(index);
+        enterEditSelectedContact(index);
+        submitDeleteSelectedContact();
+    }
 }
 
 
