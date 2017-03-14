@@ -116,6 +116,22 @@ public class ContactHelper extends BaseTest {
         enterEditSelectedContact(index);
         submitDeleteSelectedContact();
     }
+
+    public void deleteContact(ContactData contact) {
+        selectById(contact.getId());
+        enterEditSelectedContactById(contact.getId());
+        submitDeleteSelectedContact();
+    }
+
+    private void enterEditSelectedContactById(int id) {
+        wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
+    }
+
+    private void selectById(int id) {
+        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+    }
+
+    //raw.findElement(By.xpath(".//img[@title='Edit']")).click();
 }
 
 
