@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.java.addressbook.model.ContactData;
-import ru.java.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -105,8 +104,8 @@ public class ContactHelper extends BaseTest {
         return contacts;
     }
 
-    public void editContact(ContactData contact, int index) {
-        enterEditSelectedContact(index);
+    public void editContact(ContactData contact) {
+        enterEditSelectedContactById(contact.getId());
         fillContactForm(contact, false);
         submitEditSelectedContact();
     }
