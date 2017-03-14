@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by SBT-Studenov-DV on 14.03.2017.
+ * Created by Studenov-DV on 14.03.2017.
  */
 public class Groups extends ForwardingSet<GroupData> {
 

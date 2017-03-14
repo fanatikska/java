@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.java.addressbook.model.ContactData;
+import ru.java.addressbook.model.Contacts;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -74,24 +75,9 @@ public class ContactHelper extends BaseTest {
         return wd.findElements(By.cssSelector("tr")).size();
     }
 
-    public List<ContactData> list() {
+    public Contacts all() {
 
-        List<ContactData> contacts = new ArrayList<ContactData>();
-        List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
-        for (WebElement element : elements) {
-            Integer id = Integer.valueOf(element.findElement(By.cssSelector("td.center input")).getAttribute("value"));
-            List<WebElement> cells = element.findElements(By.tagName("td"));
-                 String  last_name = String.valueOf(cells.get(1).getText());
-                 String name = String.valueOf(cells.get(2).getText());
-                    ContactData contact = new ContactData().withId(id).withName(name).withLast_name(last_name);
-                contacts.add(contact);
-            }
-        return contacts;
-    }
-
-    public Set<ContactData> all() {
-
-        Set<ContactData> contacts = new HashSet<ContactData>();
+        Contacts contacts = new Contacts();
         List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
         for (WebElement element : elements) {
             Integer id = Integer.valueOf(element.findElement(By.cssSelector("td.center input")).getAttribute("value"));
