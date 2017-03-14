@@ -8,10 +8,7 @@ import org.testng.Assert;
 import ru.java.addressbook.model.ContactData;
 import ru.java.addressbook.model.Contacts;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Studenov-DV on 21.02.2017.
@@ -69,15 +66,22 @@ public class ContactHelper extends BaseTest {
     public void create(ContactData contactData, Boolean bool) {
         fillContactForm(contactData, true);
         submitContactCreation();
+        contactCache = null;
     }
 
-    public int getContactCount() {
+    public int count() {
         return wd.findElements(By.cssSelector("tr")).size();
     }
 
+    private Contacts contactCache = null;
+
     public Contacts all() {
 
-        Contacts contacts = new Contacts();
+        if (contactCache != null) {
+            return new Contacts(contactCache);
+        }
+
+        contactCache = new Contacts();
         List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
         for (WebElement element : elements) {
             Integer id = Integer.valueOf(element.findElement(By.cssSelector("td.center input")).getAttribute("value"));
@@ -85,27 +89,23 @@ public class ContactHelper extends BaseTest {
             String  last_name = String.valueOf(cells.get(1).getText());
             String name = String.valueOf(cells.get(2).getText());
             ContactData contact = new ContactData().withId(id).withName(name).withLast_name(last_name);
-            contacts.add(contact);
+            contactCache.add(contact);
         }
-        return contacts;
+        return new Contacts(contactCache);
     }
 
     public void editContact(ContactData contact) {
         enterEditSelectedContactById(contact.getId());
         fillContactForm(contact, false);
         submitEditSelectedContact();
-    }
-
-    public void deleteContact(int index) {
-        select(index);
-        enterEditSelectedContact(index);
-        submitDeleteSelectedContact();
+        contactCache = null;
     }
 
     public void deleteContact(ContactData contact) {
         selectById(contact.getId());
         enterEditSelectedContactById(contact.getId());
         submitDeleteSelectedContact();
+        contactCache = null;
     }
 
     private void enterEditSelectedContactById(int id) {
@@ -116,7 +116,6 @@ public class ContactHelper extends BaseTest {
         wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
 
-    //raw.findElement(By.xpath(".//img[@title='Edit']")).click();
 }
 
 

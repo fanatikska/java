@@ -1,6 +1,5 @@
 package ru.java.addressbook.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.java.addressbook.model.ContactData;
 import ru.java.addressbook.model.Contacts;
@@ -22,8 +21,9 @@ public class AddNewContactTest extends TestBase {
         app.goTo().addContactPage();
         app.contact().create(contact, true);
         app.goTo().pageHome();
+        assertEquals(app.contact().count(), before.size()+2);
         Contacts after = app.contact().all();
-        assertEquals(after.size(), before.size() + 1);
+        assertThat(after.size(), equalTo(before.size() + 1 ));
         assertThat(after, equalTo(before
                 .withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
     }
