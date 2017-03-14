@@ -9,7 +9,9 @@ import ru.java.addressbook.model.ContactData;
 import ru.java.addressbook.model.GroupData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Studenov-DV on 21.02.2017.
@@ -75,26 +77,31 @@ public class ContactHelper extends BaseTest {
 
     public List<ContactData> list() {
 
-
         List<ContactData> contacts = new ArrayList<ContactData>();
         List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
         for (WebElement element : elements) {
             Integer id = Integer.valueOf(element.findElement(By.cssSelector("td.center input")).getAttribute("value"));
             List<WebElement> cells = element.findElements(By.tagName("td"));
-
-
                  String  last_name = String.valueOf(cells.get(1).getText());
                  String name = String.valueOf(cells.get(2).getText());
-
-
                     ContactData contact = new ContactData().withId(id).withName(name).withLast_name(last_name);
-
                 contacts.add(contact);
             }
+        return contacts;
+    }
 
+    public Set<ContactData> all() {
 
-
-
+        Set<ContactData> contacts = new HashSet<ContactData>();
+        List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
+        for (WebElement element : elements) {
+            Integer id = Integer.valueOf(element.findElement(By.cssSelector("td.center input")).getAttribute("value"));
+            List<WebElement> cells = element.findElements(By.tagName("td"));
+            String  last_name = String.valueOf(cells.get(1).getText());
+            String name = String.valueOf(cells.get(2).getText());
+            ContactData contact = new ContactData().withId(id).withName(name).withLast_name(last_name);
+            contacts.add(contact);
+        }
         return contacts;
     }
 

@@ -62,19 +62,6 @@ public class GroupHelper extends BaseTest{
         return  wd.findElements(By.name("selected[]")).size();
     }
 
-    public List<GroupData> list() {
-        List<GroupData> groups = new ArrayList<GroupData>();
-        List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
-        for(WebElement element : elements){
-        String name = element.getText();
-        Integer id = Integer.valueOf(element.findElement(By.tagName("input")).getAttribute("value"));
-        GroupData group = new GroupData().withId(id).withName(name);
-        groups.add(group);
-
-        }
-        return groups;
-    }
-
     public Groups all() {
         Groups groups = new Groups();
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
@@ -95,10 +82,6 @@ public class GroupHelper extends BaseTest{
         submitEditSelectedGroup();
         }
 
-    public void deletionGroup(int index) {
-        select(index);
-        deleteSelectedGroup();
-    }
 
     public void delete(GroupData group) {
         selectById(group.getId());

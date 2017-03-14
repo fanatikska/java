@@ -94,15 +94,6 @@ public class ContactData {
         return group;
     }
 
-    public ContactData withId(int id) {
-        this.id = id;
-        return this;
-    }
-
-    public int getId() {
-        return id;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -110,6 +101,7 @@ public class ContactData {
 
         ContactData that = (ContactData) o;
 
+        if (id != that.id) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         return last_name != null ? last_name.equals(that.last_name) : that.last_name == null;
     }
@@ -118,7 +110,17 @@ public class ContactData {
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (last_name != null ? last_name.hashCode() : 0);
+        result = 31 * result + id;
         return result;
+    }
+
+    public ContactData withId(int id) {
+        this.id = id;
+        return this;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override
