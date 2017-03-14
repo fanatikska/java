@@ -4,9 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.java.addressbook.model.GroupData;
+import ru.java.addressbook.model.Groups;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Studenov-DV on 21.02.2017.
@@ -65,15 +68,28 @@ public class GroupHelper extends BaseTest{
         for(WebElement element : elements){
         String name = element.getText();
         Integer id = Integer.valueOf(element.findElement(By.tagName("input")).getAttribute("value"));
-        GroupData group = new GroupData(id, name, null, null);
+        GroupData group = new GroupData().withId(id).withName(name);
         groups.add(group);
 
         }
         return groups;
     }
 
-    public void modification(GroupData group, int index) {
-        select(index);
+    public Groups all() {
+        Groups groups = new Groups();
+        List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+        for(WebElement element : elements){
+            String name = element.getText();
+            Integer id = Integer.valueOf(element.findElement(By.tagName("input")).getAttribute("value"));
+            GroupData group = new GroupData().withId(id).withName(name);
+            groups.add(group);
+
+        }
+        return groups;
+    }
+
+    public void modification(GroupData group) {
+        selectById(group.getId());
         editSelectedGroup();
         fillGroupForm(group);
         submitEditSelectedGroup();
@@ -84,4 +100,12 @@ public class GroupHelper extends BaseTest{
         deleteSelectedGroup();
     }
 
+    public void delete(GroupData group) {
+        selectById(group.getId());
+        deleteSelectedGroup();
+    }
+
+    private void selectById(int id) {
+        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+    }
 }
