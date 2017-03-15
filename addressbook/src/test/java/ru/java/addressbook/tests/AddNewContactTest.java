@@ -21,7 +21,7 @@ public class AddNewContactTest extends TestBase {
         app.goTo().addContactPage();
         app.contact().create(contact, true);
         app.goTo().pageHome();
-        assertEquals(app.contact().count(), before.size()+2);
+        assertEquals(app.contact().count(), before.size()+1);
         Contacts after = app.contact().all();
         assertThat(after.size(), equalTo(before.size() + 1 ));
         assertThat(after, equalTo(before

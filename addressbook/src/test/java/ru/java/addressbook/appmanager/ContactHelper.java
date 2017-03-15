@@ -70,7 +70,7 @@ public class ContactHelper extends BaseTest {
     }
 
     public int count() {
-        return wd.findElements(By.cssSelector("tr")).size();
+        return wd.findElements(By.cssSelector("tr[name='entry']")).size();
     }
 
     private Contacts contactCache = null;
