@@ -8,7 +8,9 @@ import org.testng.Assert;
 import ru.java.addressbook.model.ContactData;
 import ru.java.addressbook.model.Contacts;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Studenov-DV on 21.02.2017.
@@ -82,13 +84,18 @@ public class ContactHelper extends BaseTest {
         }
 
         contactCache = new Contacts();
+        Set<ContactData> contacts = new HashSet<>();
         List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
         for (WebElement element : elements) {
             Integer id = Integer.valueOf(element.findElement(By.cssSelector("td.center input")).getAttribute("value"));
             List<WebElement> cells = element.findElements(By.tagName("td"));
             String  last_name = String.valueOf(cells.get(1).getText());
             String name = String.valueOf(cells.get(2).getText());
-            ContactData contact = new ContactData().withId(id).withName(name).withLast_name(last_name);
+            String allPhones = String.valueOf(cells.get(5).getText());
+            String[] phone = String.valueOf(cells.get(5).getText()).split("\n");
+            ContactData contact = new ContactData().withId(id).withName(name).withLast_name(last_name)
+                    .withallPhones(allPhones);
+
             contactCache.add(contact);
         }
         return new Contacts(contactCache);
@@ -114,6 +121,18 @@ public class ContactHelper extends BaseTest {
 
     private void selectById(int id) {
         wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+    }
+
+    public ContactData infoFromEditForm(ContactData contact) {
+
+        enterEditSelectedContactById(contact.getId());
+        String home_number = wd.findElement(By.name("home")).getAttribute("value");
+        String mobile_number = wd.findElement(By.name("mobile")).getAttribute("value");
+        String work_number = wd.findElement(By.name ("work")).getAttribute("value");
+        wd.navigate().back();
+
+        return  new ContactData().withPhone_number(home_number)
+                .withMobile_number(mobile_number).withWork_phone(work_number);
     }
 
 }

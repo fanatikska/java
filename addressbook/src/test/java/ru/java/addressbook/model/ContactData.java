@@ -8,9 +8,17 @@ public class ContactData {
     private  String company;
     private  String address;
     private  String phone_number;
+    private  String mobile_number;
+    private  String allPhones;
+    private  String work_phone;
     private  String email;
     private  String group;
     private  int id = Integer.MAX_VALUE;
+
+    public ContactData withallPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return this;
+    }
 
     public ContactData withName(String name) {
         this.name = name;
@@ -57,9 +65,23 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withMobile_number(String mobile_number) {
+        this.mobile_number = mobile_number;
+        return this;
+    }
+
+    public ContactData withWork_phone(String work_phone) {
+        this.work_phone = work_phone;
+        return this;
+    }
+
 
     public String getName() {
         return name;
+    }
+
+    public String getallPhones() {
+        return allPhones;
     }
 
     public String getLast_name() {
@@ -92,6 +114,14 @@ public class ContactData {
 
     public String getGroup() {
         return group;
+    }
+
+    public String getMobile_number() {
+        return mobile_number;
+    }
+
+    public String getWork_phone() {
+        return work_phone;
     }
 
     @Override
@@ -133,10 +163,12 @@ public class ContactData {
                 ", company='" + company + '\'' +
                 ", address='" + address + '\'' +
                 ", phone_number='" + phone_number + '\'' +
+                ", mobile_number='" + mobile_number + '\'' +
+                ", allPhones='" + allPhones + '\'' +
+                ", work_phone='" + work_phone + '\'' +
                 ", email='" + email + '\'' +
                 ", group='" + group + '\'' +
                 ", id=" + id +
                 '}';
     }
-
 }
