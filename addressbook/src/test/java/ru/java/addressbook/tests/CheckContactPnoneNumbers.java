@@ -22,8 +22,9 @@ public class CheckContactPnoneNumbers extends TestBase{
         app.goTo().pageHome();
         ContactData checkContact = app.contact().all().iterator().next();
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(checkContact);
-        assertThat(checkContact.getallPhones(), equalTo((mergePhones(contactInfoFromEditForm))));
-
+        if (checkContact.getallPhones() != null){
+            assertThat(checkContact.getallPhones(), equalTo((mergePhones(contactInfoFromEditForm))));
+        }
     }
 
     private String mergePhones(ContactData contact) {
