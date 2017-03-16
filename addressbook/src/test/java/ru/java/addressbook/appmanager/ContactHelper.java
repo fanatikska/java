@@ -120,13 +120,27 @@ public class ContactHelper extends BaseTest {
         wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
     }
 
+    private void enterDetailsSelectedContactById(int id) {
+        wd.findElement(By.cssSelector("a[href='view.php?id=" + id + "']")).click();
+    }
+
     private void selectById(int id) {
         wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
 
+    public ContactData infoFromDetailForm (ContactData contact){
+
+            enterDetailsSelectedContactById(contact.getId());
+            String info = wd.findElement(By.cssSelector("div#content")).getText();
+            wd.navigate().back();
+            return  new ContactData().withInfo(info);
+        }
+
     public ContactData infoFromEditForm(ContactData contact) {
 
         enterEditSelectedContactById(contact.getId());
+        String name = wd.findElement(By.name("firstname")).getAttribute("value");
+        String last_name = wd.findElement(By.name("lastname")).getAttribute("value");
         String home_number = wd.findElement(By.name("home")).getAttribute("value");
         String mobile_number = wd.findElement(By.name("mobile")).getAttribute("value");
         String work_number = wd.findElement(By.name ("work")).getAttribute("value");
@@ -136,7 +150,7 @@ public class ContactHelper extends BaseTest {
         String email_address3 = wd.findElement(By.name("email3")).getAttribute("value");
         wd.navigate().back();
 
-        return  new ContactData().withPhone_number(home_number)
+        return  new ContactData().withPhone_number(home_number).withName(name).withLast_name(last_name)
                 .withMobile_number(mobile_number).withWork_phone(work_number).withAddress(address)
                 .withEmail1(email_address1).withEmail2(email_address2).withEmail3(email_address3);
     }

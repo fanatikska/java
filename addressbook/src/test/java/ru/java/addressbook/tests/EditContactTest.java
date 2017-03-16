@@ -19,7 +19,7 @@ public class EditContactTest extends TestBase{
         app.goTo().pageHome();
         if (app.contact().all().size() == 0){
             app.contact().create(new ContactData().withName("name").withLast_name("last_name")
-                    .withNick_name("nickname").withTitle("title").withCompany("company").withAddress("address 80 / 5")
+                    .withAddress("address 80 / 5")
                     .withPhone_number("8-905-999-99-99").withEmailAll("e-mail@mail.ru").withGroup("stest1"), true);
             app.goTo().pageHome();
         }

@@ -15,10 +15,42 @@ public class ContactData {
     private  String email1;
     private  String email2;
     private  String email3;
-
-
+    private  String info;
     private  String group;
     private  int id = Integer.MAX_VALUE;
+
+
+    public String getInfo() {
+        return info;
+    }
+
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "name='" + name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", nick_name='" + nick_name + '\'' +
+                ", title='" + title + '\'' +
+                ", company='" + company + '\'' +
+                ", address='" + address + '\'' +
+                ", home_phone='" + home_phone + '\'' +
+                ", mobile_number='" + mobile_number + '\'' +
+                ", allPhones='" + allPhones + '\'' +
+                ", work_phone='" + work_phone + '\'' +
+                ", emailAll='" + emailAll + '\'' +
+                ", email1='" + email1 + '\'' +
+                ", email2='" + email2 + '\'' +
+                ", email3='" + email3 + '\'' +
+                ", info='" + info + '\'' +
+                ", group='" + group + '\'' +
+                ", id=" + id +
+                '}';
+    }
+
+    public ContactData withInfo(String info) {
+        this.info = info;
+        return this;
+    }
 
     public ContactData withallPhones(String allPhones) {
         this.allPhones = allPhones;
@@ -106,28 +138,6 @@ public class ContactData {
     public ContactData withEmail3(String email3) {
         this.email3 = email3;
         return this;
-    }
-
-    @Override
-    public String toString() {
-        return "ContactData{" +
-                "name='" + name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", nick_name='" + nick_name + '\'' +
-                ", title='" + title + '\'' +
-                ", company='" + company + '\'' +
-                ", address='" + address + '\'' +
-                ", home_phone='" + home_phone + '\'' +
-                ", mobile_number='" + mobile_number + '\'' +
-                ", allPhones='" + allPhones + '\'' +
-                ", work_phone='" + work_phone + '\'' +
-                ", emailAll='" + emailAll + '\'' +
-                ", email1='" + email1 + '\'' +
-                ", email2='" + email2 + '\'' +
-                ", email3='" + email3 + '\'' +
-                ", group='" + group + '\'' +
-                ", id=" + id +
-                '}';
     }
 
     public String getName() {
