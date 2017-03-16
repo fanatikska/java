@@ -20,7 +20,7 @@ public class EditContactTest extends TestBase{
         if (app.contact().all().size() == 0){
             app.contact().create(new ContactData().withName("name").withLast_name("last_name")
                     .withNick_name("nickname").withTitle("title").withCompany("company").withAddress("address 80 / 5")
-                    .withPhone_number("8-905-999-99-99").withEmail("e-mail@mail.ru").withGroup("stest1"), true);
+                    .withPhone_number("8-905-999-99-99").withEmailAll("e-mail@mail.ru").withGroup("stest1"), true);
             app.goTo().pageHome();
         }
     }
@@ -32,7 +32,7 @@ public class EditContactTest extends TestBase{
         ContactData modifyContact = before.iterator().next();
         ContactData contact = new ContactData().withId(modifyContact.getId()).withName("name5").withLast_name("last_name5")
                 .withNick_name("nickname5").withTitle("title5").withCompany("company5").withAddress("address 55 / 5")
-                .withPhone_number("8-905-555-55-55").withEmail("e-mail5@mail.ru").withGroup("stest1");
+                .withPhone_number("8-905-555-55-55").withEmailAll("e-mail5@mail.ru").withGroup("stest1");
         app.contact().editContact(contact);
         app.goTo().pageHome();
         assertThat(app.contact().count(), equalTo(before.size()));

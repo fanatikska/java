@@ -33,8 +33,8 @@ public class ContactHelper extends BaseTest {
         type(By.name("title"), contactData.getTitle());
         type(By.name("company"), contactData.getCompany());
         type(By.name("address"), contactData.getAddress());
-        type(By.name("mobile"), contactData.getPhone_number());
-        type(By.name("email"), contactData.getEmail());
+        type(By.name("mobile"), contactData.getHome_phone());
+        type(By.name("email"), contactData.getEmailAll());
         if (!bool) {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         } else if (bool
@@ -95,7 +95,7 @@ public class ContactHelper extends BaseTest {
             String address = String.valueOf(cells.get(3).getText());
             String emailAddress = String.valueOf(cells.get(4).getText());
             ContactData contact = new ContactData().withId(id).withName(name).withLast_name(last_name)
-                    .withallPhones(allPhones).withAddress(address).withEmail(emailAddress);
+                    .withallPhones(allPhones).withAddress(address).withEmailAll(emailAddress);
 
             contactCache.add(contact);
         }
@@ -131,12 +131,14 @@ public class ContactHelper extends BaseTest {
         String mobile_number = wd.findElement(By.name("mobile")).getAttribute("value");
         String work_number = wd.findElement(By.name ("work")).getAttribute("value");
         String address = wd.findElement(By.name("address")).getAttribute("value");
-        String email_address = wd.findElement(By.name("email")).getAttribute("value");
+        String email_address1 = wd.findElement(By.name("email")).getAttribute("value");
+        String email_address2 = wd.findElement(By.name("email2")).getAttribute("value");
+        String email_address3 = wd.findElement(By.name("email3")).getAttribute("value");
         wd.navigate().back();
 
         return  new ContactData().withPhone_number(home_number)
                 .withMobile_number(mobile_number).withWork_phone(work_number).withAddress(address)
-                .withEmail(email_address);
+                .withEmail1(email_address1).withEmail2(email_address2).withEmail3(email_address3);
     }
 
 }

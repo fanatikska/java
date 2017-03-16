@@ -7,11 +7,16 @@ public class ContactData {
     private  String title;
     private  String company;
     private  String address;
-    private  String phone_number;
+    private  String home_phone;
     private  String mobile_number;
     private  String allPhones;
     private  String work_phone;
-    private  String email;
+    private  String emailAll;
+    private  String email1;
+    private  String email2;
+    private  String email3;
+
+
     private  String group;
     private  int id = Integer.MAX_VALUE;
 
@@ -51,12 +56,12 @@ public class ContactData {
     }
 
     public ContactData withPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+        this.home_phone = phone_number;
         return this;
     }
 
-    public ContactData withEmail(String email) {
-        this.email = email;
+    public ContactData withEmailAll(String email) {
+        this.emailAll = email;
         return this;
     }
 
@@ -75,6 +80,55 @@ public class ContactData {
         return this;
     }
 
+
+    public String getEmail1() {
+        return email1;
+    }
+
+    public ContactData withEmail1(String email1) {
+        this.email1 = email1;
+        return this;
+    }
+
+    public String getEmail2() {
+        return email2;
+    }
+
+    public ContactData withEmail2(String email2) {
+        this.email2 = email2;
+        return this;
+    }
+
+    public String getEmail3() {
+        return email3;
+    }
+
+    public ContactData withEmail3(String email3) {
+        this.email3 = email3;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "name='" + name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", nick_name='" + nick_name + '\'' +
+                ", title='" + title + '\'' +
+                ", company='" + company + '\'' +
+                ", address='" + address + '\'' +
+                ", home_phone='" + home_phone + '\'' +
+                ", mobile_number='" + mobile_number + '\'' +
+                ", allPhones='" + allPhones + '\'' +
+                ", work_phone='" + work_phone + '\'' +
+                ", emailAll='" + emailAll + '\'' +
+                ", email1='" + email1 + '\'' +
+                ", email2='" + email2 + '\'' +
+                ", email3='" + email3 + '\'' +
+                ", group='" + group + '\'' +
+                ", id=" + id +
+                '}';
+    }
 
     public String getName() {
         return name;
@@ -104,12 +158,12 @@ public class ContactData {
         return address;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getHome_phone() {
+        return home_phone;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmailAll() {
+        return emailAll;
     }
 
     public String getGroup() {
@@ -153,22 +207,4 @@ public class ContactData {
         return id;
     }
 
-    @Override
-    public String toString() {
-        return "ContactData{" +
-                "name='" + name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", nick_name='" + nick_name + '\'' +
-                ", title='" + title + '\'' +
-                ", company='" + company + '\'' +
-                ", address='" + address + '\'' +
-                ", phone_number='" + phone_number + '\'' +
-                ", mobile_number='" + mobile_number + '\'' +
-                ", allPhones='" + allPhones + '\'' +
-                ", work_phone='" + work_phone + '\'' +
-                ", email='" + email + '\'' +
-                ", group='" + group + '\'' +
-                ", id=" + id +
-                '}';
-    }
 }
