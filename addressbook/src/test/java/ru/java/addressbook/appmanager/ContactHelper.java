@@ -92,9 +92,10 @@ public class ContactHelper extends BaseTest {
             String  last_name = String.valueOf(cells.get(1).getText());
             String name = String.valueOf(cells.get(2).getText());
             String allPhones = String.valueOf(cells.get(5).getText());
-            String[] phone = String.valueOf(cells.get(5).getText()).split("\n");
+            String address = String.valueOf(cells.get(3).getText());
+            String emailAddress = String.valueOf(cells.get(4).getText());
             ContactData contact = new ContactData().withId(id).withName(name).withLast_name(last_name)
-                    .withallPhones(allPhones);
+                    .withallPhones(allPhones).withAddress(address).withEmail(emailAddress);
 
             contactCache.add(contact);
         }
@@ -129,10 +130,13 @@ public class ContactHelper extends BaseTest {
         String home_number = wd.findElement(By.name("home")).getAttribute("value");
         String mobile_number = wd.findElement(By.name("mobile")).getAttribute("value");
         String work_number = wd.findElement(By.name ("work")).getAttribute("value");
+        String address = wd.findElement(By.name("address")).getAttribute("value");
+        String email_address = wd.findElement(By.name("email")).getAttribute("value");
         wd.navigate().back();
 
         return  new ContactData().withPhone_number(home_number)
-                .withMobile_number(mobile_number).withWork_phone(work_number);
+                .withMobile_number(mobile_number).withWork_phone(work_number).withAddress(address)
+                .withEmail(email_address);
     }
 
 }

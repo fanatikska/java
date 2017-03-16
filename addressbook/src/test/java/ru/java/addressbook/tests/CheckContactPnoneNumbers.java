@@ -26,13 +26,6 @@ public class CheckContactPnoneNumbers extends TestBase{
     }
 
     private String mergePhones(ContactData contact) {
-
-        System.out.println(contact.getPhone_number());
-        System.out.println(contact.getMobile_number());
-        System.out.println(contact.getWork_phone());
-        System.out.println(contact.getallPhones());
-
-
         return Arrays.asList(contact.getPhone_number(), contact.getMobile_number(), contact.getWork_phone()).stream()
         .filter((s) -> ! s.equals("")).map(CheckContactPnoneNumbers::cleaned).collect(Collectors.joining("\n"));
     }
