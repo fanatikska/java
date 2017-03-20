@@ -26,7 +26,7 @@ public class CheckContactAllFields extends TestBase {
             assertThat(cleaned(contactInfoFromDetailForm.getInfo()), equalTo(mergeInfo(contactInfoFromEditForm)));
         }
 
-    }  
+    }
 
     public static String cleaned(String allInfo) {
         return allInfo.replaceAll("\\s", "").replaceAll("[-()]", "").replace("M:", "").replaceAll("Memberof.*","")
