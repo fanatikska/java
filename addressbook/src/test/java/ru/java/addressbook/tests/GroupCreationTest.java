@@ -3,6 +3,8 @@ package ru.java.addressbook.tests;
 import com.thoughtworks.xstream.XStream;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -38,7 +40,6 @@ public class GroupCreationTest extends TestBase{
 
     @Test(dataProvider = "validGroups")
     public void testGroupCreation(GroupData group) {
-
         app.goTo().groupPage();
         Groups before = app.group().all();
         app.group().create(group);
