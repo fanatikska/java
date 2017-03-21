@@ -1,10 +1,12 @@
 package ru.java.addressbook.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
+@XStreamAlias("contact")
 public class ContactData {
     private  String name;
     private  String last_name;
-    private  String nick_name;
-    private  String title;
     private  String company;
     private  String address;
     private  String home_phone;
@@ -15,8 +17,10 @@ public class ContactData {
     private  String email1;
     private  String email2;
     private  String email3;
+
     private  String info;
     private  String group;
+    @XStreamOmitField
     private  int id = Integer.MAX_VALUE;
 
 
@@ -29,9 +33,7 @@ public class ContactData {
         return "ContactData{" +
                 "name='" + name + '\'' +
                 ", last_name='" + last_name + '\'' +
-                ", nick_name='" + nick_name + '\'' +
-                ", title='" + title + '\'' +
-                ", company='" + company + '\'' +
+                 ", company='" + company + '\'' +
                 ", address='" + address + '\'' +
                 ", home_phone='" + home_phone + '\'' +
                 ", mobile_number='" + mobile_number + '\'' +
@@ -67,17 +69,7 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withNick_name(String nick_name) {
-        this.nick_name = nick_name;
-        return this;
-    }
-
-    public ContactData withTitle(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public ContactData withCompany(String company) {
+     public ContactData withCompany(String company) {
         this.company = company;
         return this;
     }
@@ -150,14 +142,6 @@ public class ContactData {
 
     public String getLast_name() {
         return last_name;
-    }
-
-    public String getNick_name() {
-        return nick_name;
-    }
-
-    public String getTitle() {
-        return title;
     }
 
     public String getCompany() {

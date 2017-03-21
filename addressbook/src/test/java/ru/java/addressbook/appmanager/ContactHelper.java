@@ -29,8 +29,6 @@ public class ContactHelper extends BaseTest {
     public void fillContactForm(ContactData contactData, Boolean bool) {
         type(By.name("firstname"), contactData.getName());
         type(By.name("lastname"), contactData.getLast_name());
-        type(By.name("nickname"), contactData.getNick_name());
-        type(By.name("title"), contactData.getTitle());
         type(By.name("company"), contactData.getCompany());
         type(By.name("address"), contactData.getAddress());
         type(By.name("mobile"), contactData.getHome_phone());

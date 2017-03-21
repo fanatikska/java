@@ -31,7 +31,7 @@ public class EditContactTest extends TestBase{
         Contacts before = app.contact().all();
         ContactData modifyContact = before.iterator().next();
         ContactData contact = new ContactData().withId(modifyContact.getId()).withName("name5").withLast_name("last_name5")
-                .withNick_name("nickname5").withTitle("title5").withCompany("company5").withAddress("address 55 / 5")
+                .withCompany("company5").withAddress("address 55 / 5")
                 .withPhone_number("8-905-555-55-55").withEmailAll("e-mail5@mail.ru").withGroup("stest1");
         app.contact().editContact(contact);
         app.goTo().pageHome();
