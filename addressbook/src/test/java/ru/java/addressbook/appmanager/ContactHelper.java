@@ -35,6 +35,9 @@ public class ContactHelper extends BaseTest {
         type(By.name("email"), contactData.getEmailAll());
         if (!bool) {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
+        } else if (contactData.getGroup() != ""
+                || contactData.getGroup() == null) {
+            Assert.assertTrue(isElementPresent(By.name("new_group")));
         } else if (bool
                 && isElementPresent(By.name("new_group"))) {
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());

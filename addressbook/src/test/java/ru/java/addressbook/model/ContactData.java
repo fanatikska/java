@@ -7,18 +7,26 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 public class ContactData {
     private  String name;
     private  String last_name;
+    @XStreamOmitField
     private  String company;
     private  String address;
+    @XStreamOmitField
     private  String home_phone;
     private  String mobile_number;
+    @XStreamOmitField
     private  String allPhones;
+    @XStreamOmitField
     private  String work_phone;
+    @XStreamOmitField
     private  String emailAll;
     private  String email1;
+    @XStreamOmitField
     private  String email2;
+    @XStreamOmitField
     private  String email3;
-
+    @XStreamOmitField
     private  String info;
+    @XStreamOmitField
     private  String group;
     @XStreamOmitField
     private  int id = Integer.MAX_VALUE;

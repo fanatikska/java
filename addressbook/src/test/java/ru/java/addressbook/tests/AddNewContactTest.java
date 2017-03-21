@@ -39,10 +39,7 @@ public class AddNewContactTest extends TestBase {
     }
 
     @Test(dataProvider = "validContacts")
-    public void testAddNewContactTest() {
-        ContactData contact = new ContactData().withName("name").withLast_name("last_name")
-                .withAddress("address 80 / 5")
-                .withMobile_number("8-905-999-99-99").withEmailAll("e-mail@mail.ru").withGroup("stest1");
+    public void testAddNewContactTest(ContactData contact) {
         app.goTo().pageHome();
         Contacts before = app.contact().all();
         app.goTo().addContactPage();
