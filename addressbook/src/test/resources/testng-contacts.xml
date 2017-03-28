@@ -8,6 +8,7 @@
             <class name="ru.java.addressbook.tests.CheckContactAddress"/>
             <class name="ru.java.addressbook.tests.CheckContactEmailAddress"/>
             <class name="ru.java.addressbook.tests.CheckContactPnoneNumbers"/>
+            <class name="ru.java.addressbook.tests.CheckContactAllFields"/>
             <class name="ru.java.addressbook.tests.DeleteContactTest"/>
         </classes>
     </test>

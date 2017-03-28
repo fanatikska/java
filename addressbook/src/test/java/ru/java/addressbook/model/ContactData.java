@@ -16,44 +16,38 @@ public class ContactData {
     @Column(name = "id")
     private  int id = Integer.MAX_VALUE;
     @Column(name = "firstname")
-    private  String name;
+    private  String name = "";
     @Column(name = "lastname")
-    private  String last_name;
+    private  String last_name = "";
     @Column(name = "company")
     private  String company = "";
     @Column(name = "address")
     @Type(type = "text")
-    private  String address;
-    @XStreamOmitField
+    private  String address = "";
     @Column(name = "home")
     @Type(type = "text")
-    private  String home_phone;
+    private  String home_phone = "";
     @Column(name = "mobile")
     @Type(type = "text")
-    private  String mobile_number;
-
+    private  String mobile_number = "";
     @XStreamOmitField
     @Transient
     private  String allPhones;
-    @XStreamOmitField
     @Column(name = "work")
     @Type(type = "text")
-    private  String work_phone;
+    private  String work_phone = "";
     @XStreamOmitField
     @Transient
     private  String emailAll;
     @Column(name = "email")
     @Type(type = "text")
-    private  String email1;
-    @XStreamOmitField
+    private  String email1 = "";
     @Column(name = "email2")
     @Type(type = "text")
-    private  String email2;
-    @XStreamOmitField
+    private  String email2 = "";
     @Column(name = "email3")
     @Type(type = "text")
-    private  String email3;
-    @XStreamOmitField
+    private  String email3 = "";
     @Transient
     private  String info;
     @XStreamOmitField
@@ -62,16 +56,6 @@ public class ContactData {
 
     public String getInfo() {
         return info;
-    }
-
-    @Override
-    public String toString() {
-        return "ContactData{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", company='" + company + '\'' +
-                '}';
     }
 
     @Override
@@ -84,7 +68,15 @@ public class ContactData {
         if (id != that.id) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (last_name != null ? !last_name.equals(that.last_name) : that.last_name != null) return false;
-        return company != null ? company.equals(that.company) : that.company == null;
+        if (company != null ? !company.equals(that.company) : that.company != null) return false;
+        if (address != null ? !address.equals(that.address) : that.address != null) return false;
+        if (home_phone != null ? !home_phone.equals(that.home_phone) : that.home_phone != null) return false;
+        if (mobile_number != null ? !mobile_number.equals(that.mobile_number) : that.mobile_number != null)
+            return false;
+        if (work_phone != null ? !work_phone.equals(that.work_phone) : that.work_phone != null) return false;
+        if (email1 != null ? !email1.equals(that.email1) : that.email1 != null) return false;
+        if (email2 != null ? !email2.equals(that.email2) : that.email2 != null) return false;
+        return email3 != null ? email3.equals(that.email3) : that.email3 == null;
     }
 
     @Override
@@ -93,7 +85,31 @@ public class ContactData {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (last_name != null ? last_name.hashCode() : 0);
         result = 31 * result + (company != null ? company.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (home_phone != null ? home_phone.hashCode() : 0);
+        result = 31 * result + (mobile_number != null ? mobile_number.hashCode() : 0);
+        result = 31 * result + (work_phone != null ? work_phone.hashCode() : 0);
+        result = 31 * result + (email1 != null ? email1.hashCode() : 0);
+        result = 31 * result + (email2 != null ? email2.hashCode() : 0);
+        result = 31 * result + (email3 != null ? email3.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", company='" + company + '\'' +
+                ", address='" + address + '\'' +
+                ", home_phone='" + home_phone + '\'' +
+                ", mobile_number='" + mobile_number + '\'' +
+                ", work_phone='" + work_phone + '\'' +
+                ", email1='" + email1 + '\'' +
+                ", email2='" + email2 + '\'' +
+                ", email3='" + email3 + '\'' +
+                '}';
     }
 
     public ContactData withInfo(String info) {

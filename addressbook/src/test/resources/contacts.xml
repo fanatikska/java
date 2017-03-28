@@ -4,15 +4,11 @@
     <last__name>last_name 0</last__name>
     <company>company 0</company>
     <address>Street 0, home 1</address>
+    <home__phone>8(987)4564545</home__phone>
     <mobile__number>+79034567701</mobile__number>
+    <work__phone>8968999 99 99</work__phone>
     <email1>email0@mail.ru</email1>
-  </contact>
-  <contact>
-    <name>name 1</name>
-    <last__name>last_name 1</last__name>
-    <company>company 1</company>
-    <address>Street 1, home 2</address>
-    <mobile__number>+79034567712</mobile__number>
-    <email1>email1@mail.ru</email1>
+    <email2>email2@,ail.ru</email2>
+    <email3>email3@mail.ru</email3>
   </contact>
 </list>

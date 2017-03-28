@@ -48,6 +48,10 @@ public class AddNewContactTest extends TestBase {
         assertEquals(app.contact().count(), before.size()+1);
         Contacts after = app.db().contacts();
         assertThat(after.size(), equalTo(before.size() + 1 ));
+        System.out.println(before);
+        System.out.println(after);
+        System.out.println(before
+                .withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt())));
         assertThat(after, equalTo(before
                 .withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
     }

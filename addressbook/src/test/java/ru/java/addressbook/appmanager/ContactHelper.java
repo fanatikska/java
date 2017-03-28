@@ -27,12 +27,20 @@ public class ContactHelper extends BaseTest {
 
 
     public void fillContactForm(ContactData contactData, Boolean bool) {
+
+        System.out.println(contactData.getHome_phone());
+        System.out.println(contactData.getWork_phone());
         type(By.name("firstname"), contactData.getName());
         type(By.name("lastname"), contactData.getLast_name());
         type(By.name("company"), contactData.getCompany());
         type(By.name("address"), contactData.getAddress());
-        type(By.name("mobile"), contactData.getHome_phone());
-        type(By.name("email"), contactData.getEmailAll());
+        type(By.name("mobile"), contactData.getMobile_number());
+        type(By.name("email"), checkNull(contactData.getEmail1()));
+        type(By.name("home"), checkNull(contactData.getHome_phone()));
+        type(By.name("work"), checkNull(contactData.getWork_phone()));
+        type(By.name("work"), checkNull(contactData.getWork_phone()));
+        type(By.name("email2"), checkNull(contactData.getEmail2()));
+        type(By.name("email3"), checkNull(contactData.getEmail3()));
         if (!bool) {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         } else if (contactData.getGroup() != ""
@@ -157,6 +165,10 @@ public class ContactHelper extends BaseTest {
                 .withEmail1(email_address1).withEmail2(email_address2).withEmail3(email_address3);
     }
 
+    public String checkNull(String field){
+        if (field != null) return field;
+        else return "";
+    }
 }
 
 
