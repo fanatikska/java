@@ -149,9 +149,10 @@ public class ContactHelper extends BaseTest {
         String email_address1 = wd.findElement(By.name("email")).getAttribute("value");
         String email_address2 = wd.findElement(By.name("email2")).getAttribute("value");
         String email_address3 = wd.findElement(By.name("email3")).getAttribute("value");
+        String company = wd.findElement(By.name("company")).getAttribute("value");
         wd.navigate().back();
 
-        return  new ContactData().withPhone_number(home_number).withName(name).withLast_name(last_name)
+        return  new ContactData().withPhone_number(home_number).withName(name).withLast_name(last_name).withCompany(company)
                 .withMobile_number(mobile_number).withWork_phone(work_number).withAddress(address)
                 .withEmail1(email_address1).withEmail2(email_address2).withEmail3(email_address3);
     }

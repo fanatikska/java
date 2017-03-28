@@ -35,7 +35,7 @@ public class CheckContactAllFields extends TestBase {
 
 
     private String mergeInfo(ContactData contact) {
-        return Arrays.asList(contact.getName(), contact.getLast_name(), contact.getAddress(),
+        return Arrays.asList(contact.getName(), contact.getLast_name(), contact.getCompany(), contact.getAddress(),
                 contact.getHome_phone(), contact.getMobile_number(), contact.getWork_phone(),
                 contact.getEmail1(), contact.getEmail2(), contact.getEmail3()).stream()
                 .filter((s) -> ! s.equals("")).map(CheckContactPnoneNumbers::cleaned).collect(Collectors.joining(""));

@@ -2,6 +2,7 @@
   <contact>
     <name>name 0</name>
     <last__name>last_name 0</last__name>
+    <company>company 0</company>
     <address>Street 0, home 1</address>
     <mobile__number>+79034567701</mobile__number>
     <email1>email0@mail.ru</email1>
@@ -9,15 +10,9 @@
   <contact>
     <name>name 1</name>
     <last__name>last_name 1</last__name>
+    <company>company 1</company>
     <address>Street 1, home 2</address>
     <mobile__number>+79034567712</mobile__number>
     <email1>email1@mail.ru</email1>
-  </contact>
-  <contact>
-    <name>name 2</name>
-    <last__name>last_name 2</last__name>
-    <address>Street 2, home 3</address>
-    <mobile__number>+79034567723</mobile__number>
-    <email1>email2@mail.ru</email1>
   </contact>
 </list>

@@ -17,7 +17,7 @@ public class EditContactTest extends TestBase{
     @BeforeMethod
     public void ensurePrecondition(){
         app.goTo().pageHome();
-        if (app.contact().all().size() == 0){
+        if (app.db().contacts().size() == 0){
             app.contact().create(new ContactData().withName("name").withLast_name("last_name")
                     .withAddress("address 80 / 5")
                     .withPhone_number("8-905-999-99-99").withEmailAll("e-mail@mail.ru").withGroup("stest1"), true);
@@ -28,7 +28,7 @@ public class EditContactTest extends TestBase{
     @Test
     public  void testEditContactTest(){
 
-        Contacts before = app.contact().all();
+        Contacts before = app.db().contacts();
         ContactData modifyContact = before.iterator().next();
         ContactData contact = new ContactData().withId(modifyContact.getId()).withName("name5").withLast_name("last_name5")
                 .withCompany("company5").withAddress("address 55 / 5")
@@ -36,7 +36,9 @@ public class EditContactTest extends TestBase{
         app.contact().editContact(contact);
         app.goTo().pageHome();
         assertThat(app.contact().count(), equalTo(before.size()));
-        Contacts after = app.contact().all();
+        Contacts after = app.db().contacts();
+        System.out.println("do" + before);
+        System.out.println("posle" + contact);
         assertThat(after, equalTo(before.without(modifyContact).withAdded(contact)));
     }
 

@@ -10,14 +10,19 @@ import javax.persistence.*;
 @Entity
 @Table (name = "addressbook")
 public class ContactData {
+
+    @XStreamOmitField
+    @Id
+    @Column(name = "id")
+    private  int id = Integer.MAX_VALUE;
     @Column(name = "firstname")
     private  String name;
     @Column(name = "lastname")
     private  String last_name;
-    @XStreamOmitField
-    @Transient
-    private  String company;
-    @Transient
+    @Column(name = "company")
+    private  String company = "";
+    @Column(name = "address")
+    @Type(type = "text")
     private  String address;
     @XStreamOmitField
     @Column(name = "home")
@@ -26,6 +31,7 @@ public class ContactData {
     @Column(name = "mobile")
     @Type(type = "text")
     private  String mobile_number;
+
     @XStreamOmitField
     @Transient
     private  String allPhones;
@@ -36,13 +42,16 @@ public class ContactData {
     @XStreamOmitField
     @Transient
     private  String emailAll;
-    @Transient
+    @Column(name = "email")
+    @Type(type = "text")
     private  String email1;
     @XStreamOmitField
-    @Transient
+    @Column(name = "email2")
+    @Type(type = "text")
     private  String email2;
     @XStreamOmitField
-    @Transient
+    @Column(name = "email3")
+    @Type(type = "text")
     private  String email3;
     @XStreamOmitField
     @Transient
@@ -50,11 +59,6 @@ public class ContactData {
     @XStreamOmitField
     @Transient
     private  String group;
-    @XStreamOmitField
-    @Id
-    @Column(name = "id")
-    private  int id = Integer.MAX_VALUE;
-
 
     public String getInfo() {
         return info;
@@ -63,22 +67,33 @@ public class ContactData {
     @Override
     public String toString() {
         return "ContactData{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", last_name='" + last_name + '\'' +
-                 ", company='" + company + '\'' +
-                ", address='" + address + '\'' +
-                ", home_phone='" + home_phone + '\'' +
-                ", mobile_number='" + mobile_number + '\'' +
-                ", allPhones='" + allPhones + '\'' +
-                ", work_phone='" + work_phone + '\'' +
-                ", emailAll='" + emailAll + '\'' +
-                ", email1='" + email1 + '\'' +
-                ", email2='" + email2 + '\'' +
-                ", email3='" + email3 + '\'' +
-                ", info='" + info + '\'' +
-                ", group='" + group + '\'' +
-                ", id=" + id +
+                ", company='" + company + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ContactData that = (ContactData) o;
+
+        if (id != that.id) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (last_name != null ? !last_name.equals(that.last_name) : that.last_name != null) return false;
+        return company != null ? company.equals(that.company) : that.company == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (last_name != null ? last_name.hashCode() : 0);
+        result = 31 * result + (company != null ? company.hashCode() : 0);
+        return result;
     }
 
     public ContactData withInfo(String info) {
@@ -202,26 +217,6 @@ public class ContactData {
 
     public String getWork_phone() {
         return work_phone;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ContactData that = (ContactData) o;
-
-        if (id != that.id) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        return last_name != null ? last_name.equals(that.last_name) : that.last_name == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (last_name != null ? last_name.hashCode() : 0);
-        result = 31 * result + id;
-        return result;
     }
 
     public ContactData withId(int id) {

@@ -19,6 +19,8 @@ import java.util.List;
  */
 public class ContactDataGenerator {
 
+    //-f src/test/resources/contacts.xml -c 2 -d xml
+
     @Parameter(names = "-c", description = "Contact count")
     public int count;
 
@@ -63,8 +65,8 @@ public class ContactDataGenerator {
     private void saveAsCSV(List<ContactData> contacts, File file) throws IOException {
         Writer writer = new FileWriter(file);
         for(ContactData contact : contacts){
-            writer.write(String.format("%s;%s;%s;%s;%s;%s \n", contact.getName(), contact.getLast_name(), contact.getAddress()
-                    , contact.getEmail1(), contact.getMobile_number(), contact.getGroup()));
+            writer.write(String.format("%s;%s;%s;%s;%s;%s;%s \n", contact.getName(), contact.getLast_name(), contact.getAddress()
+                    , contact.getEmail1(), contact.getMobile_number(), contact.getGroup(), contact.getCompany()));
         }
         writer.close();
     }
@@ -75,7 +77,7 @@ public class ContactDataGenerator {
             contacts.add(new ContactData().withName(String.format("name %s", i)).withLast_name(String.format("last_name %s", i))
                     .withAddress(String.format("Street %s, home %s", i, i+1)).withEmail1(String
                             .format("email%s@mail.ru", i)).withMobile_number(String
-                            .format("+790345677%s%s", cut(i), cut(i+1))).withGroup(""));
+                            .format("+790345677%s%s", cut(i), cut(i+1))).withGroup("").withCompany(String.format("company %s", i)));
         }
         return contacts;
     }
