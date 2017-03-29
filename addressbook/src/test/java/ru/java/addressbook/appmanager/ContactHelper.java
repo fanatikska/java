@@ -41,12 +41,11 @@ public class ContactHelper extends BaseTest {
         type(By.name("work"), checkNull(contactData.getWork_phone()));
         type(By.name("email2"), checkNull(contactData.getEmail2()));
         type(By.name("email3"), checkNull(contactData.getEmail3()));
-/*        if (!bool) {
+        if (!bool) {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
-        } else if (contactData.inGroup() != ""
-                || contactData.inGroup() == null) {
+        } else if (contactData.getGroups().isEmpty()) {
             Assert.assertTrue(isElementPresent(By.name("new_group")));
-        } else if (bool
+        } /*else if (bool
                 && isElementPresent(By.name("new_group"))) {
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.inGroup());
         }*/
