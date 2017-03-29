@@ -5,7 +5,6 @@ import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
 import com.thoughtworks.xstream.XStream;
 import ru.java.addressbook.model.ContactData;
-import ru.java.addressbook.model.GroupData;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -65,8 +64,8 @@ public class ContactDataGenerator {
     private void saveAsCSV(List<ContactData> contacts, File file) throws IOException {
         Writer writer = new FileWriter(file);
         for(ContactData contact : contacts){
-            writer.write(String.format("%s;%s;%s;%s;%s;%s;%s \n", contact.getName(), contact.getLast_name()
-                    , contact.getAddress(), contact.getEmail1(), contact.getMobile_number(), contact.getGroup()
+            writer.write(String.format("%s;%s;%s;%s;%s;%s \n", contact.getName(), contact.getLast_name()
+                    , contact.getAddress(), contact.getEmail1(), contact.getMobile_number()
                     , contact.getCompany()));
         }
         writer.close();
@@ -78,7 +77,7 @@ public class ContactDataGenerator {
             contacts.add(new ContactData().withName(String.format("name %s", i)).withLast_name(String.format("last_name %s", i))
                     .withAddress(String.format("Street %s, home %s", i, i+1)).withEmail1(String
                             .format("email%s@mail.ru", i)).withMobile_number(String
-                            .format("+790345677%s%s", cut(i), cut(i+1))).withGroup("").withCompany(String.format("company %s", i))
+                            .format("+790345677%s%s", cut(i), cut(i+1))).withCompany(String.format("company %s", i))
                     .withWork_phone("8968999 99 99").withPhone_number("8(987)4564545").withEmail2("email2@,ail.ru")
             .withEmail3("email3@mail.ru"));
         }

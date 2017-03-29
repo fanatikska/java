@@ -2,9 +2,13 @@ package ru.java.addressbook.model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import javafx.collections.ListChangeListener;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 @XStreamAlias("contact")
 @Entity
@@ -50,9 +54,11 @@ public class ContactData {
     private  String email3 = "";
     @Transient
     private  String info;
-    @XStreamOmitField
-    @Transient
-    private  String group;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "address_in_groups", joinColumns = @JoinColumn(name = "id")
+            , inverseJoinColumns = @JoinColumn(name = "group_id"))
+    private Set<GroupData> groups = new HashSet<GroupData>();
 
     public String getInfo() {
         return info;
@@ -152,11 +158,6 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withGroup(String group) {
-        this.group = group;
-        return this;
-    }
-
     public ContactData withMobile_number(String mobile_number) {
         this.mobile_number = mobile_number;
         return this;
@@ -167,6 +168,9 @@ public class ContactData {
         return this;
     }
 
+    public Groups getGroups() {
+        return new Groups(groups);
+    }
 
     public String getEmail1() {
         return email1;
@@ -223,10 +227,6 @@ public class ContactData {
         return emailAll;
     }
 
-    public String getGroup() {
-        return group;
-    }
-
     public String getMobile_number() {
         return mobile_number;
     }
@@ -244,4 +244,8 @@ public class ContactData {
         return id;
     }
 
+    public ContactData inGroup(GroupData group) {
+        groups.add(group);
+        return this;
+    }
 }

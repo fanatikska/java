@@ -41,15 +41,15 @@ public class ContactHelper extends BaseTest {
         type(By.name("work"), checkNull(contactData.getWork_phone()));
         type(By.name("email2"), checkNull(contactData.getEmail2()));
         type(By.name("email3"), checkNull(contactData.getEmail3()));
-        if (!bool) {
+/*        if (!bool) {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
-        } else if (contactData.getGroup() != ""
-                || contactData.getGroup() == null) {
+        } else if (contactData.inGroup() != ""
+                || contactData.inGroup() == null) {
             Assert.assertTrue(isElementPresent(By.name("new_group")));
         } else if (bool
                 && isElementPresent(By.name("new_group"))) {
-            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-        }
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.inGroup());
+        }*/
 
     }
 
@@ -125,7 +125,7 @@ public class ContactHelper extends BaseTest {
         contactCache = null;
     }
 
-    private void enterEditSelectedContactById(int id) {
+    public void enterEditSelectedContactById(int id) {
         wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
     }
 
@@ -133,7 +133,7 @@ public class ContactHelper extends BaseTest {
         wd.findElement(By.cssSelector("a[href='view.php?id=" + id + "']")).click();
     }
 
-    private void selectById(int id) {
+    public void selectById(int id) {
         wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
 
@@ -168,6 +168,11 @@ public class ContactHelper extends BaseTest {
     public String checkNull(String field){
         if (field != null) return field;
         else return "";
+    }
+
+    public void checkGroup(int id) {
+        wd.findElement(By.cssSelector("select[name='to_group']>option[value='" + id + "']")).click();
+        click(By.cssSelector("input[name='add']"));
     }
 }
 

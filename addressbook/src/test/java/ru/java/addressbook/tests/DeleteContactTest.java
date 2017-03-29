@@ -16,12 +16,12 @@ public class DeleteContactTest extends TestBase {
     @BeforeMethod
     public void ensurePrecondition() {
         app.goTo().pageHome();
-        if (app.db().contacts().size() == 0) {
+ /*       if (app.db().contacts().size() == 0) {
             app.contact().create(new ContactData().withName("name").withLast_name("last_name")
                     .withAddress("address 80 / 5")
-                    .withPhone_number("8-905-999-99-99").withEmailAll("e-mail@mail.ru").withGroup("stest1"), true);
+                    .withPhone_number("8-905-999-99-99").withEmailAll("e-mail@mail.ru").inGroup("stest1"), true);
             app.goTo().pageHome();
-        }
+        }*/
     }
 
     @Test
