@@ -170,9 +170,13 @@ public class ContactHelper extends BaseTest {
         else return "";
     }
 
-    public void checkGroup(int id) {
+    public void addGroupToContact(int id) {
         wd.findElement(By.cssSelector("select[name='to_group']>option[value='" + id + "']")).click();
         click(By.cssSelector("input[name='add']"));
+    }
+
+    public void removeGroupFromContact(int id) {
+        wd.findElement(By.cssSelector("select[name='group']>option[value='" + id + "']")).click();
     }
 }
 
