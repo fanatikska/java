@@ -1,4 +1,4 @@
-package ru.java.addressbook.model;
+package ru.java.mantis.model;
 
 /**
  * Created by Studenov-DV on 03.04.2017.

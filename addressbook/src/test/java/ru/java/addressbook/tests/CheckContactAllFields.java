@@ -20,8 +20,6 @@ public class CheckContactAllFields extends TestBase {
         ContactData checkContact = app.contact().all().iterator().next();
         ContactData contactInfoFromDetailForm = app.contact().infoFromDetailForm(checkContact);
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(checkContact);
-        String a = cleaned(contactInfoFromDetailForm.getInfo());
-        String b = mergeInfo(contactInfoFromEditForm);
         if (contactInfoFromDetailForm.getInfo() != null) {
             assertThat(cleaned(contactInfoFromDetailForm.getInfo()), equalTo(mergeInfo(contactInfoFromEditForm)));
         }

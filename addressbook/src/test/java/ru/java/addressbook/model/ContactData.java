@@ -2,12 +2,10 @@ package ru.java.addressbook.model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
-import javafx.collections.ListChangeListener;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 @XStreamAlias("contact")

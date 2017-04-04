@@ -1,7 +1,8 @@
-package ru.java.addressbook.tests;
+package ru.java.mantis.tests;
 
 import org.testng.annotations.Test;
-import ru.java.addressbook.appmanager.HttpSession;
+import ru.java.mantis.appmanager.HttpSession;
+
 import java.io.IOException;
 import static org.testng.Assert.assertTrue;
 
@@ -12,8 +13,6 @@ import static org.testng.Assert.assertTrue;
 public class LoginTests extends TestBase{
 
     public void testLogin() throws IOException {
-        HttpSession session = app.newSession();
-        assertTrue(session.login("administrator", "root1"));
-        assertTrue(session.IsLoggedInAs("administrator"));
+        app.registration().enterUsersAdministrator();
     }
 }

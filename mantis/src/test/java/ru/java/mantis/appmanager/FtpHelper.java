@@ -1,4 +1,4 @@
-package ru.java.addressbook.appmanager;
+package ru.java.mantis.appmanager;
 
 import org.apache.commons.net.ftp.FTPClient;
 

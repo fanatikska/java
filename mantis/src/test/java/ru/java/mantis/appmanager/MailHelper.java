@@ -1,13 +1,11 @@
-package ru.java.addressbook.appmanager;
+package ru.java.mantis.appmanager;
 
 import org.subethamail.wiser.Wiser;
 import org.subethamail.wiser.WiserMessage;
-import ru.java.addressbook.model.MailMessage;
+import ru.java.mantis.model.MailMessage;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
