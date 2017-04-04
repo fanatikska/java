@@ -43,8 +43,6 @@ public class EditContactTest extends TestBase{
         app.goTo().pageHome();
         assertThat(app.contact().count(), equalTo(before.size()));
         Contacts after = app.db().contacts();
-        System.out.println("do" + before);
-        System.out.println("posle" + contact);
         assertThat(after, equalTo(before.without(modifyContact).withAdded(contact)));
     }
 

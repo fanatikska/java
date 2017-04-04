@@ -1,6 +1,10 @@
 package ru.java.mantis.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.internal.ElementScrollBehavior;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import ru.java.mantis.model.MailMessage;
 import ru.lanwen.verbalregex.VerbalExpression;
@@ -53,9 +57,17 @@ public class RegistrationHelper extends HelperBase{
         assertTrue(app.newSession().login(user, password));
     }
 
-    public void enterUsersAdministrator() throws IOException {
+    public void enterUsersAdministratorWithoutBrowser() throws IOException {
         HttpSession session = app.newSession();
         Assert.assertTrue(session.login("administrator", "root1"));
         Assert.assertTrue(session.IsLoggedInAs("administrator"));
+    }
+
+    public void enterUsersAdministrator() {
+        wd.manage().window().maximize();
+        wd.get(app.getProperty("web.baseUrl"));
+        type(By.name("username"), "administrator");
+        type(By.name("password"), "root1");
+        click(By.cssSelector("input[value='Войти']"));
     }
 }

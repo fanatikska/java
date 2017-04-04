@@ -13,8 +13,6 @@ import javax.persistence.Table;
 @Table(name = "mantis_user_table")
 public class UsersData {
 
-        //@Entity
-        //@Table(name = "mantis_user_table")
         @Id
         @Column(name = "id")
         private int id = Integer.MAX_VALUE;

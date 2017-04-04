@@ -4,7 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.internal.ElementScrollBehavior;
 import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.io.FileReader;
@@ -66,7 +69,9 @@ public class ApplicationManager {
     public WebDriver getDriver() {
         if (wd == null){
             if (browser.equals(BrowserType.FIREFOX)){
-                wd = new FirefoxDriver();
+                DesiredCapabilities capabilities = new DesiredCapabilities();
+                capabilities.setCapability(CapabilityType.ELEMENT_SCROLL_BEHAVIOR, ElementScrollBehavior.BOTTOM);
+                wd = new FirefoxDriver(capabilities);
             } else if (browser.equals(BrowserType.CHROME)){
                 wd = new ChromeDriver();
             } else if (browser.equals(BrowserType.IE)){
